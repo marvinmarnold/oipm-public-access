@@ -15,4 +15,8 @@ In most cases, this code should be used for reference and auditing.
 
 1. Copy `.Renviron.example` to `.Renviron` (`cp .Renviron.example .Renviron`).
 2. Set `WORK_DIR` to the top level of the directory. Set `DATA_DIR` to location of data.
-2. Run the pipeline `Rscript pipeline.R`.
+3. Install dependencies:
+  ```
+    install.packages('dplyr')
+  ```
+4. Run the pipeline `Rscript pipeline.R`.

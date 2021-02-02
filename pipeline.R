@@ -9,15 +9,20 @@
 print(">> Initializing")
 rm(list = ls())
 readRenviron(".Renviron")
-setwd(Sys.getenv("WORK_DIR"))
+WORK_DIR <- Sys.getenv("WORK_DIR")
+DATA_DIR <- Sys.getenv("DATA_DIR")
+
+setwd(WORK_DIR)
 print(paste("Working directory set to:", getwd()))
+
+CSV_SEP <- ","
 
 ##############################################################################################
 ######################################## LOAD DEPENDENCIES ###################################
 print(">> Loading dependencies")
 
 # Load libraries
-#library(dplyr)
+library(dplyr)
 #library(plotly)
 #library(stringr)
 #library(tidyr)
