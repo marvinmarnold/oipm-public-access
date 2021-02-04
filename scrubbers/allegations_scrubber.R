@@ -18,9 +18,15 @@ data.all <- read.csv(data.path, stringsAsFactors = FALSE)
 
 data.scrubbed <- data.all %>% 
   select(
-    -c(Citizen.dob, Citizen.narrative)
+    -c(
+      Citizen.dob, 
+      Citizen.narrative,
+      FD.involvement,
+      Allegation.AUS.ALG.comment
+    )
   )
 
+print(sort(colnames(data.scrubbed)))
 ##############################################################################################
 # Write output
 output.path <- paste0(DATA_DIR, "/", scrubbed.data.filename)

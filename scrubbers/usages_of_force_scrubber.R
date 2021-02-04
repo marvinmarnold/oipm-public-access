@@ -17,7 +17,15 @@ data.all <- read.csv(data.path, stringsAsFactors = FALSE)
 ##############################################################################################
 # Scrub
 
-data.scrubbed <- data.all 
+data.scrubbed <- data.all %>% 
+  select(
+    -c(
+      Citizen.narrative,
+      FD.involvement
+    )
+  )
+
+print(sort(colnames(data.scrubbed)))
 ##############################################################################################
 # Write output
 output.path <- paste0(DATA_DIR, "/", scrubbed.data.filename)
