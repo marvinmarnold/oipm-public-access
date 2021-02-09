@@ -1,14 +1,14 @@
 ##############################################################################################
-############################## Usages of Force Scrubber ######################################
+################################ Actions Taken Scrubber ######################################
 
 # This scrubber takes the raw data set and redacts certain fields according to office policy.
 
 # Source: NOPD (Dante Bidwell)
-# Dates: 2015 - 2/20/19
+# Dates: Start of IAPro - 2/20/19
 
 print(">> Scrubbing usages of force")
-raw.data.filename <- "01_Raw/IAPro/uof_nopd_20190220.csv"
-scrubbed.data.filename <- "02_Scrubbed/IAPro/uof_nopd_20190220.csv"
+raw.data.filename <- "01_Raw/IAPro/actions_taken_nopd_20190220.csv"
+scrubbed.data.filename <- "02_Scrubbed/IAPro/actions_taken_nopd_20190220.csv"
 
 # Load data
 data.path <- paste0(DATA_DIR, "/", raw.data.filename)
@@ -19,8 +19,7 @@ data.all <- read.csv(data.path, stringsAsFactors = FALSE)
 data.scrubbed <- data.all %>% 
   select(
     -c(
-      Citizen.narrative,
-      FD.involvement
+      Action.taken.summary
     )
   )
 
@@ -29,6 +28,7 @@ print(sort(colnames(data.scrubbed)))
 # Write output
 output.path <- paste0(DATA_DIR, "/", scrubbed.data.filename)
 write.table(data.scrubbed, output.path, sep = CSV_SEP, row.names=FALSE)
+write.table(sort(colnames(data.scrubbed)), paste0(output.path,".columns"), sep = CSV_SEP, row.names=FALSE)
 
 # Cleanup: leave scrubbed data frame in memory
 rm(raw.data.filename, data.path, data.all,

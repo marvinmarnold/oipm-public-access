@@ -4,7 +4,6 @@
 
 # Source: NOPD (Dante Bidwell)
 # Dates: 2005 - 2/20/19
-# Fields scrubbed: Citizen narrative & Citizen.dob
 
 print(">> Scrubbing allegations")
 raw.data.filename <- "01_Raw/IAPro/allegations_nopd_20190220.csv"
